@@ -16,38 +16,36 @@ local AutoFiles_Write = function()
 local Create_Info = function(Token,Sudo,user)  
 local Write_Info_Sudo = io.open("Info.lua", 'w')
 Write_Info_Sudo:write([[
-
 token = "]]..Token..[["
 SUDO = ]]..Sudo..[[  
 UserName = "]]..user..[["
-
 ]])
 Write_Info_Sudo:close()
 end  
 if not database:get(Server_Done.."Token_Write") then
-print('\27[0;31m\n ارسل لي توكن البوت الان ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27')
+print('\27[0;31m\n ارسل لي توكن البوت الان ↓ :\na-----------------------------\n\27')
 local token = io.read()
 if token ~= '' then
 local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
 if res ~= 200 then
-io.write('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n التوكن غير صحيح تاكد منه ثم ارسله')
+io.write('\27[0;31m-----------------------------\n التوكن غير صحيح تاكد منه ثم ارسله')
 else
-io.write('\27[0;31m تم حفظ التوكن بنجاح \na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n27[0;39;49m')
+io.write('\27[0;31m تم حفظ التوكن بنجاح \na-----------------------------\n27[0;39;49m')
 database:set(Server_Done.."Token_Write",token)
 end 
 else
-io.write('\27[0;35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ التوكن ارسل لي التوكن الان')
+io.write('\27[0;35m----------------------------- ┉\n لم يتم حفظ التوكن ارسل لي التوكن الان')
 end 
 os.execute('lua install.lua')
 end
 if not database:get(Server_Done.."UserSudo_Write") then
-print('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\27[0;33;49m')
+print('\27[0;35m\n ارسل لي ايدي المطور الاساسي ↓ :\na-----------------------------\n\27[0;33;49m')
 local Id = io.read():gsub(' ','') 
 if tostring(Id):match('%d+') then
-io.write('\27[1;35m تم حفظ ايدي المطور الاساسي \na┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n27[0;39;49m')
+io.write('\27[1;35m تم حفظ ايدي المطور الاساسي \na-----------------------------\n27[0;39;49m')
 database:set(Server_Done.."UserSudo_Write",Id)
 else
-io.write('\27[0;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
+io.write('\27[0;31m----------------------------- ┉ ┉\n لم يتم حفظ ايدي المطور الاساسي ارسله مره اخره')
 end
 os.execute('lua install.lua')
 end
